@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -11,20 +13,26 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
     public void OurFirstTest() {
 
 
-        Integer loan = 30000;
+        BigDecimal loan = new BigDecimal (30000);
 
-        Integer firstperiod = loan * 10 / 100 * 10;
-        Integer secondperiod = loan * 8 / 100 * 10;
-        Integer thirdperiod = loan * 6 / 100 * 10;
-        Integer totalamount = loan + firstperiod + secondperiod + thirdperiod;
+        BigDecimal decade = new BigDecimal(10);
+        BigDecimal firstPercent = new BigDecimal(0.1);
+        BigDecimal secondPercent = new BigDecimal(0.08);
+        BigDecimal thirdPercent = new BigDecimal(0.06);
 
-        Integer ExpectedTotalAmount = 102000;
+        BigDecimal firstPeriod = loan.multiply(firstPercent).multiply(decade);
+        BigDecimal secondPeriod = loan.multiply(secondPercent).multiply(decade);
+        BigDecimal thirdPeriod = loan.multiply(thirdPercent).multiply(decade);
+
+        BigDecimal totalAmount = loan.add(firstPeriod).add(secondPeriod).add(thirdPeriod);
 
 
-        assertEquals(ExpectedTotalAmount,totalamount,"Wrong sum !");
+        BigDecimal expectedTotalAmount = new BigDecimal (102000);
+
+
+        assertEquals(expectedTotalAmount,totalAmount,"Wrong sum !");
         text = "Correct sum : ";
-        System.out.println(text + totalamount);
-
+        System.out.println(text + totalAmount);
 
 
     }
