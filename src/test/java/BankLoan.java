@@ -23,8 +23,6 @@ public class BankLoan {
 
 
 
-
-
         BigDecimal yearsToMonths = new BigDecimal(360);
         BigDecimal averagePercentfor30Years = new BigDecimal(0.08);
         BigDecimal one = new BigDecimal(1);
