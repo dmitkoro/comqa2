@@ -16,30 +16,40 @@ public class BankLoan {
     public void OurFirstTest() {
 
 
-        BigDecimal loan = new BigDecimal (250000);
-
-        BigDecimal decade = new BigDecimal(10);
-        BigDecimal firstPercent = new BigDecimal(0.1);
-        BigDecimal secondPercent = new BigDecimal(0.08);
-        BigDecimal thirdPercent = new BigDecimal(0.06);
-
-        BigDecimal firstPeriod = loan.multiply(firstPercent).multiply(decade);
-        BigDecimal secondPeriod = loan.multiply(secondPercent).multiply(decade);
-        BigDecimal thirdPeriod = loan.multiply(thirdPercent).multiply(decade);
-
-        BigDecimal totalAmount = loan.add(firstPeriod).add(secondPeriod).add(thirdPeriod).round(new MathContext(15, RoundingMode.HALF_UP));
-        System.out.println("Expected sum is : " + totalAmount);
+        //Введите сумму заёма и сумму которую вы планируете отдать
+        BigDecimal loan = new BigDecimal(3415565);
+        BigDecimal expectedTotalAmount = new BigDecimal(9025272);
 
 
 
-        BigDecimal expectedTotalAmount = new BigDecimal (850000);
 
 
 
-         assertTrue(expectedTotalAmount.compareTo(totalAmount)==0);
+        BigDecimal yearsToMonths = new BigDecimal(360);
+        BigDecimal averagePercentfor30Years = new BigDecimal(0.08);
+        BigDecimal one = new BigDecimal(1);
 
-        text = "Correct sum : ";
-        System.out.println(text + totalAmount);
+
+        //1. Процентная ставка по кредиту в месяц = годовая процентная ставка / 12 месяцев 8%/12 месяцев/100.
+        BigDecimal monthAmount = new BigDecimal(12);
+        BigDecimal monthlyPercent = averagePercentfor30Years.divide(monthAmount, MathContext.DECIMAL32);
+
+
+
+        //2. Коэффициент аннуитета = (0.0.006666667*(1+0.006666667)^360)/((1+0.006666667)^360—1).
+        BigDecimal percentsForFirstDecadePart1 = monthlyPercent.add(one).pow(360, MathContext.DECIMAL32).multiply(monthlyPercent);
+        BigDecimal percentsForFirstDecadePart2 = monthlyPercent.add(one).pow(360, MathContext.DECIMAL32).subtract(one);
+        BigDecimal coefficient = percentsForFirstDecadePart1.divide(percentsForFirstDecadePart2, MathContext.DECIMAL32).round(new MathContext(3, RoundingMode.HALF_UP));
+
+
+        text = "Here is a sum you have to pay within 30 years : ";
+        BigDecimal monthlySumToPay = coefficient.multiply(loan).round(new MathContext(6, RoundingMode.HALF_UP));
+        BigDecimal sumToPayForAllPeriod = monthlySumToPay.multiply(yearsToMonths);
+        System.out.println(text + sumToPayForAllPeriod);
+
+
+        assertTrue(expectedTotalAmount.compareTo(sumToPayForAllPeriod) == 0);
+
 
 
     }
