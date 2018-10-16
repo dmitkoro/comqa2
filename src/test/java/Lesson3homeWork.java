@@ -39,8 +39,6 @@ public class Lesson3homeWork {
 
         }
 
-        System.out.println("newListDelfi = " + newListDelfi);
-
 
         driver.get(HOME_PAGE2);
         driver.manage().window().maximize();
@@ -57,14 +55,11 @@ public class Lesson3homeWork {
 
         System.out.println("newListmDelfi = " + newListmDelfi);
 
-        //        Assertions.assertEquals(articleNameToCheck,article.getText(),"This in not true Article! ");
-
+        Assertions.assertEquals(newListmDelfi, newListDelfi, "Articles are different ! ");
 
         driver.close();
-        // Go to delfi.lv
-        // Find Webelement of the first article
-        // Check if this is correct article
 
+        System.out.println("===============================Articles are match , test SUCCESSFULLY COMPLETED=======================================");
 
     }
 
