@@ -6,63 +6,58 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 
 public class Lesson3homeWork {
 
     private final By ARTICLE_TITLE = By.xpath(".//a[@class='top2012-title']");
+    private final By ARTICLE_TITLE2 = By.xpath(".//a[@class='md-scrollpos']");
     private final String HOME_PAGE = "http://delfi.lv";
-    private String articleNameToCheck = "Воскресенье стало самым теплым 14 октября в истории метеонаблюдений";
-
-
-
-    /*
-     * How to find elements :
-     *
-     * (//*[@class='.....']
-     * ()
-     */
+    private final String HOME_PAGE2 = "http://m.delfi.lv";
+    private final int articlesCount = 5;
 
 
     @Test
 
-    public void delfiFirstTitleTest(){
+    public void delfiTitlesTest() {
 
-        // Specify article name
-
-        // Create Webdriver
-        System.setProperty("webdriver.gecko.driver","/home/dmitkoro/Documents/geckodriver");
+        System.setProperty("webdriver.gecko.driver", "/home/dmitkoro/Documents/geckodriver");
         WebDriver driver = new FirefoxDriver();
-        // Open browser
         driver.get(HOME_PAGE);
-        // Change window size
         driver.manage().window().maximize();
-        WebElement article = driver.findElement(ARTICLE_TITLE);
-        System.out.println("article.getText() = " + article.getText());
-
-
-
-        int articlesCount = 5;
-
-
-//        Assertions.assertEquals(articleNameToCheck,article.getText(),"This in not true Article! ");
-
 
 
         List<WebElement> delfiList = driver.findElements((ARTICLE_TITLE));
 
 
-        List<String> newList = new ArrayList<String>();
+        List<String> newListDelfi = new ArrayList<String>();
         for (int i = 0; i < articlesCount; i++) {
 
-           newList.add(delfiList.get(i).getText());         
+            newListDelfi.add(delfiList.get(i).getText());
 
 
         }
 
-        System.out.println("newList = " + newList);
+        System.out.println("newListDelfi = " + newListDelfi);
+
+
+        driver.get(HOME_PAGE2);
+        driver.manage().window().maximize();
+        List<WebElement> mdelfiList = driver.findElements((ARTICLE_TITLE2));
+
+
+        List<String> newListmDelfi = new ArrayList<String>();
+        for (int i = 0; i < articlesCount; i++) {
+
+            newListmDelfi.add(mdelfiList.get(i).getText());
+
+
+        }
+
+        System.out.println("newListmDelfi = " + newListmDelfi);
+
+        //        Assertions.assertEquals(articleNameToCheck,article.getText(),"This in not true Article! ");
 
 
         driver.close();
@@ -71,13 +66,7 @@ public class Lesson3homeWork {
         // Check if this is correct article
 
 
-
-
-
-
     }
-
-
 
 
 }
