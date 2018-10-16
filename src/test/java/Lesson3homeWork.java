@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,14 +7,16 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class Lesson3homeWork {
 
-    private final By ARTICLE_TITLE = By.xpath(".//a[@class='top2012-title']");
-    private final By ARTICLE_TITLE2 = By.xpath(".//a[@class='md-scrollpos']");
-    private final String HOME_PAGE = "http://delfi.lv";
-    private final String HOME_PAGE2 = "http://m.delfi.lv";
-    private final int articlesCount = 5;
+    private final By ARTICLE_TITLE_DESKTOP = By.xpath(".//a[@class='top2012-title']");
+    private final By ARTICLE_TITLE_MOBILE = By.xpath(".//a[@class='md-scrollpos']");
+    private final String HOME_PAGE_DESKTOP = "http://delfi.lv";
+    private final String HOME_PAGE_MOBILE = "http://m.delfi.lv";
+    private int articlesCount = 5;
 
 
     @Test
@@ -24,11 +25,11 @@ public class Lesson3homeWork {
 
         System.setProperty("webdriver.gecko.driver", "/home/dmitkoro/Documents/geckodriver");
         WebDriver driver = new FirefoxDriver();
-        driver.get(HOME_PAGE);
+        driver.get(HOME_PAGE_DESKTOP);
         driver.manage().window().maximize();
 
 
-        List<WebElement> delfiList = driver.findElements((ARTICLE_TITLE));
+        List<WebElement> delfiList = driver.findElements((ARTICLE_TITLE_DESKTOP));
 
 
         List<String> newListDelfi = new ArrayList<String>();
@@ -40,9 +41,9 @@ public class Lesson3homeWork {
         }
 
 
-        driver.get(HOME_PAGE2);
+        driver.get(HOME_PAGE_MOBILE);
         driver.manage().window().maximize();
-        List<WebElement> mdelfiList = driver.findElements((ARTICLE_TITLE2));
+        List<WebElement> mdelfiList = driver.findElements((ARTICLE_TITLE_MOBILE));
 
 
         List<String> newListmDelfi = new ArrayList<String>();
@@ -55,7 +56,7 @@ public class Lesson3homeWork {
 
         System.out.println("newListmDelfi = " + newListmDelfi);
 
-        Assertions.assertEquals(newListmDelfi, newListDelfi, "Articles are different ! ");
+        assertEquals(newListmDelfi, newListDelfi, "Articles are different ! ");
 
         driver.close();
 
