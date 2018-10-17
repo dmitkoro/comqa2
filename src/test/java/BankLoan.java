@@ -5,12 +5,9 @@ import java.math.MathContext;
 import java.math.RoundingMode;
 
 
-<<<<<<< HEAD
-=======
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
->>>>>>> develop
 public class BankLoan {
 
     private String text;
@@ -19,27 +16,9 @@ public class BankLoan {
     public void OurFirstTest() {
 
 
-<<<<<<< HEAD
-        Integer loan = 30000;
-        Integer ExpectedTotalAmount = 102000;
-
-
-        Integer decade = 10;
-        Integer firstperiod = loan * 10 / 100 * decade;
-        Integer secondperiod = loan * 8 / 100 * decade;
-        Integer thirdperiod = loan * 6 / 100 * decade;
-        Integer totalamount = loan + firstperiod + secondperiod + thirdperiod;
-
-
-        assertEquals(ExpectedTotalAmount, totalamount, "Wrong sum !");
-        text = "Correct sum : ";
-        System.out.println(text + totalamount);
-=======
         //Введите сумму заёма и сумму которую вы планируете отдать
         BigDecimal loan = new BigDecimal(3415565);
         BigDecimal expectedTotalAmount = new BigDecimal(9025272);
-
-
 
 
         BigDecimal yearsToMonths = new BigDecimal(360);
@@ -50,7 +29,6 @@ public class BankLoan {
         //1. Процентная ставка по кредиту в месяц = годовая процентная ставка / 12 месяцев 8%/12 месяцев/100.
         BigDecimal monthAmount = new BigDecimal(12);
         BigDecimal monthlyPercent = averagePercentfor30Years.divide(monthAmount, MathContext.DECIMAL32);
-
 
 
         //2. Коэффициент аннуитета = (0.0.006666667*(1+0.006666667)^360)/((1+0.006666667)^360—1).
@@ -66,7 +44,6 @@ public class BankLoan {
 
 
         assertTrue(expectedTotalAmount.compareTo(sumToPayForAllPeriod) == 0);
->>>>>>> develop
 
 
     }
