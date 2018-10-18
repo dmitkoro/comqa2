@@ -12,10 +12,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Lesson3homeWork {
 
-    private final By ARTICLE_TITLE_DESKTOP = By.xpath(".//a[@class='top2012-title']");
+    private final By ARTICLE_TITLE_DESKTOP = By.xpath(".//h3[@class='top2012-title']/a[1]");
     private final By ARTICLE_TITLE_MOBILE = By.xpath(".//a[@class='md-scrollpos']");
-    private final String HOME_PAGE_DESKTOP = "http://delfi.lv";
-    private final String HOME_PAGE_MOBILE = "http://m.delfi.lv";
+    private final String HOME_PAGE_DESKTOP = "http://rus.delfi.lv";
+    private final String HOME_PAGE_MOBILE = "http://m.rus.delfi.lv";
     private int articlesCount = 5;
 
 
@@ -54,7 +54,6 @@ public class Lesson3homeWork {
 
         }
 
-        System.out.println("newListmDelfi = " + newListmDelfi);
 
         assertEquals(newListmDelfi, newListDelfi, "Articles are different ! ");
 
