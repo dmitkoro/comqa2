@@ -29,13 +29,13 @@ public class Lesson3homeWork {
         driver.manage().window().maximize();
 
 
-        List<WebElement> delfiList = driver.findElements((ARTICLE_TITLE_DESKTOP));
+        List<WebElement> delfiArticles = driver.findElements((ARTICLE_TITLE_DESKTOP));
 
 
         List<String> newListDelfi = new ArrayList<String>();
         for (int i = 0; i < articlesCount; i++) {
 
-            newListDelfi.add(delfiList.get(i).getText());
+            newListDelfi.add(delfiArticles.get(i).getText());
 
 
         }
@@ -43,13 +43,13 @@ public class Lesson3homeWork {
 
         driver.get(HOME_PAGE_MOBILE);
         driver.manage().window().maximize();
-        List<WebElement> mdelfiList = driver.findElements((ARTICLE_TITLE_MOBILE));
+        List<WebElement> mDelfiArticles = driver.findElements((ARTICLE_TITLE_MOBILE));
 
 
         List<String> newListmDelfi = new ArrayList<String>();
         for (int i = 0; i < articlesCount; i++) {
 
-            newListmDelfi.add(mdelfiList.get(i).getText());
+            newListmDelfi.add(mDelfiArticles.get(i).getText());
 
 
         }

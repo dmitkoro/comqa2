@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -16,6 +17,7 @@ public class Lesson4WorkInClass {
     private final String HOME_PAGE_DESKTOP = "http://rus.delfi.lv";
 
     private int articlesCount = 5;
+    WebDriver driver = new FirefoxDriver();
 
 
     @Test
@@ -23,7 +25,7 @@ public class Lesson4WorkInClass {
     public void articlesVerifying() {
 
         System.setProperty("webdriver.gecko.driver", "/home/dmitkoro/Documents/geckodriver");
-        WebDriver driver = new FirefoxDriver();
+
         driver.get(HOME_PAGE_DESKTOP);
         driver.manage().window().maximize();
 
@@ -50,7 +52,15 @@ public class Lesson4WorkInClass {
         assertEquals(newListDelfi, customArticles, "Articles is not match !!!");
 
 
+
+
+    }
+
+    @AfterEach
+    public void closeBrowser(){
+
         driver.close();
+
 
     }
 
