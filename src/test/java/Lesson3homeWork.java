@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,6 +18,7 @@ public class Lesson3homeWork {
     private final String HOME_PAGE_DESKTOP = "http://rus.delfi.lv";
     private final String HOME_PAGE_MOBILE = "http://m.rus.delfi.lv";
     private int articlesCount = 5;
+    private WebDriver driver;
 
 
     @Test
@@ -24,7 +26,7 @@ public class Lesson3homeWork {
     public void delfiTitlesTest() {
 
         System.setProperty("webdriver.gecko.driver", "/home/dmitkoro/Documents/geckodriver");
-        WebDriver driver = new FirefoxDriver();
+        driver = new FirefoxDriver();
         driver.get(HOME_PAGE_DESKTOP);
         driver.manage().window().maximize();
 
@@ -57,11 +59,14 @@ public class Lesson3homeWork {
 
         assertEquals(newListmDelfi, newListDelfi, "Articles are different ! ");
 
-        driver.close();
-
-        System.out.println("===============================Articles are match , test SUCCESSFULLY COMPLETED=======================================");
 
     }
 
+    @AfterEach
+    private void closeBrowser(){
+
+        driver.close();
+        System.out.println("===============================Articles are match , test SUCCESSFULLY COMPLETED=======================================");
+    }
 
 }

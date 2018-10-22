@@ -17,7 +17,6 @@ public class Lesson4WorkInClass {
     private final String HOME_PAGE_DESKTOP = "http://rus.delfi.lv";
 
     private int articlesCount = 5;
-    WebDriver driver = new FirefoxDriver();
 
 
     @Test
@@ -25,7 +24,7 @@ public class Lesson4WorkInClass {
     public void articlesVerifying() {
 
         System.setProperty("webdriver.gecko.driver", "/home/dmitkoro/Documents/geckodriver");
-
+        WebDriver driver = new FirefoxDriver();
         driver.get(HOME_PAGE_DESKTOP);
         driver.manage().window().maximize();
 
@@ -39,6 +38,7 @@ public class Lesson4WorkInClass {
 
         }
 
+
         System.out.println(newListDelfi);
 
         List<String> customArticles = new ArrayList<String>();
@@ -49,20 +49,15 @@ public class Lesson4WorkInClass {
         customArticles.add("В Латвии возникла нехватка вакцин для взрослых против дифтерии");
         customArticles.add("Трамп заявил о выходе из договора с Россией о ракетах средней и малой дальности");
 
+        driver.close();
+
         assertEquals(newListDelfi, customArticles, "Articles is not match !!!");
 
 
 
-
     }
 
-    @AfterEach
-    public void closeBrowser(){
 
-        driver.close();
-
-
-    }
 
 }
 
