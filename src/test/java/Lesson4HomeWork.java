@@ -17,6 +17,9 @@ public class Lesson4HomeWork {
     private final String HOME_PAGE_DESKTOP = "http://automationpractice.com";
     private WebDriver driver;
     private final int CATEGORIES_COUNTER = 3;
+    private final By FIRST_DRESS_COLOURS = By.xpath (".//li[contains(@class,'first-item-of-mobile-line')]//a[@class='color_pick']");
+    private final By SECOND_DRESS_COLOURS = By.xpath (".//li[contains(@class,'last-line last-item-of-tablet-line')]//a[@class='color_pick']");
+
 
 
     @Test
@@ -32,7 +35,7 @@ public class Lesson4HomeWork {
 
         List<WebElement> siteCategories = driver.findElements(CATEGORIES);
 
-        Assertions.assertFalse(siteCategories.isEmpty(),"siteCategories elements were not found !");
+        Assertions.assertFalse(siteCategories.isEmpty(), "siteCategories elements were not found !");
 
 
         for (int i = 0; i < CATEGORIES_COUNTER; i++) {
@@ -49,10 +52,32 @@ public class Lesson4HomeWork {
         WebElement siteDresses = driver.findElement(DRESSES);
         siteDresses.click();
 
-
         WebElement orangeColor = driver.findElement(COLOR_ORANGE);
         orangeColor.click();
+        List<WebElement> test = driver.findElements (By.xpath(".//li[contains(@class,'ajax_block_product')]"));
+        List<String> test1 = new ArrayList<String>();
 
+        for (int i = 0; i < 1; i++) {
+
+            test1.add(test.get(i).getText());
+        }
+
+            System.out.println(test1);
+
+       //String firstDressColour = driver.findElement(FIRST_DRESS_COLOURS).getAttribute("style");
+
+       // System.out.println("firstDressColour = " + firstDressColour);
+
+
+
+
+
+
+
+
+
+
+//            Assertions.assertEquals(webArticles.get(i).getText(), myArticles.get(i), "Articles is not equals");
 
     }
 
