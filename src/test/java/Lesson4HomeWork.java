@@ -19,6 +19,8 @@ public class Lesson4HomeWork {
     private final int CATEGORIES_COUNTER = 3;
     private final By FIRST_DRESS_COLOURS = By.xpath (".//li[contains(@class,'first-item-of-mobile-line')]//a[@class='color_pick']");
     private final By SECOND_DRESS_COLOURS = By.xpath (".//li[contains(@class,'last-line last-item-of-tablet-line')]//a[@class='color_pick']");
+    private final By FILTERED_DRESSES = By.xpath (".//li[contains(@class,'ajax_block_product')]");
+
 
 
 
@@ -54,15 +56,17 @@ public class Lesson4HomeWork {
 
         WebElement orangeColor = driver.findElement(COLOR_ORANGE);
         orangeColor.click();
-        List<WebElement> test = driver.findElements (By.xpath(".//li[contains(@class,'ajax_block_product')]"));
-        List<String> test1 = new ArrayList<String>();
+        List<WebElement> filteredDresses = driver.findElements (FILTERED_DRESSES);
 
-        for (int i = 0; i < 1; i++) {
+        List<String> listFilteredDresses = new ArrayList<String>();
 
-            test1.add(test.get(i).getText());
+        for (int i = 0; i < filteredDresses.size(); i++) {
+
+            listFilteredDresses.add(filteredDresses.get(i).getText());
+
+            System.out.println(" = " + filteredDresses.size());
+            //newListDelfi.add(delfiArticles.get(i).getText());
         }
-
-            System.out.println(test1);
 
        //String firstDressColour = driver.findElement(FIRST_DRESS_COLOURS).getAttribute("style");
 

@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -67,6 +68,7 @@ public class Lesson5HomeWork {
         Assertions.assertEquals(commentCount, sum, "Comments not equal");
 
     }
+
 
     public String getSubString(String input) {
         return input.substring(1, input.length() - 1);
