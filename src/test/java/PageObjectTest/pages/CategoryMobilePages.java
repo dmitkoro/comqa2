@@ -13,7 +13,7 @@ public class CategoryMobilePages {
 
     public Integer UNIT_COUNT;
 
-    public CategoryMobilePages (BaseFunc baseFunc) {
+    public CategoryMobilePages(BaseFunc baseFunc) {
         this.baseFunc = baseFunc;
         UNIT_COUNT = 3;
     }
@@ -32,16 +32,20 @@ public class CategoryMobilePages {
         return articles;
     }
 
-    public List<String> mobileCommentsCount (By locator) {
 
-        List<WebElement> mobileComments = baseFunc.getElements(locator);
-        List<String> comments = new ArrayList<String>();
+    //REPLACED with common method "articlesWithComments" in BaseFunc!!!
 
-        Assertions.assertFalse(mobileComments.isEmpty(), "Wrong locator for comments");
-        for (int i = 0; i < UNIT_COUNT; i++) {
-            comments.add(mobileComments.get(i).getText());
-        }
-
-        return comments;
-    }
+//    public List<Integer> mobileCommentsCount (By locator) {
+//
+//        List<WebElement> mobileComments = baseFunc.getElements(locator);
+//        List<Integer> commentListInt = new ArrayList<Integer>();
+//
+//        Assertions.assertFalse(mobileComments.isEmpty(), "Wrong locator for comments");
+//        for (int i = 0; i < UNIT_COUNT; i++) {
+//            String commentString = (mobileComments.get(i).getText());
+//            commentListInt.add(baseFunc.getCommentInt(commentString));
+//        }
+//
+//        return commentListInt;
+//    }
 }

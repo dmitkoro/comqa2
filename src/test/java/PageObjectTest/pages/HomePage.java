@@ -12,11 +12,6 @@ public class HomePage {
         this.baseFunc = baseFunc;
     }
 
-    public WebElement getArticleById (int id, By locator) {
-        return baseFunc.getElements(locator).get(id);
-    }
-
-
     public void clickCategoryByName(String categoryName, By locator) {
 
         List<WebElement> siteCategories = baseFunc.getElements(locator);

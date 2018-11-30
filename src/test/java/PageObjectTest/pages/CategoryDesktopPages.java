@@ -14,13 +14,13 @@ public class CategoryDesktopPages {
 
     public Integer UNIT_COUNT;
 
-    public CategoryDesktopPages (BaseFunc baseFunc) {
+    public CategoryDesktopPages(BaseFunc baseFunc) {
         this.baseFunc = baseFunc;
         UNIT_COUNT = 3;
     }
 
 
-    public List<String> desktopArticleNames (By locator) {
+    public List<String> desktopArticleNames(By locator) {
 
         List<WebElement> desktopArticles = baseFunc.getElements(locator);
         List<String> articles = new ArrayList<String>();
@@ -33,21 +33,22 @@ public class CategoryDesktopPages {
         return articles;
     }
 
-    public List<Integer> desktopCommentsCount (By locator) {
 
-        List<WebElement> desktopComments = baseFunc.getElements(locator);
-        List<Integer> commentListInt = new ArrayList<Integer>();
+    //REPLACED with common method "articlesWithComments" in BaseFunc!!!
 
-        Assertions.assertFalse(desktopComments.isEmpty(), "Wrong locator for comments");
-        for (int i = 0; i < UNIT_COUNT; i++) {
-           String commentString = (desktopComments.get(i).getText());
-            commentListInt.add(baseFunc.getCommentInt(commentString));
-        }
+//    public List<Integer> desktopCommentsCount (By locator) {
+//
+//        List<WebElement> desktopComments = baseFunc.getElements(locator);
+//        List<Integer> commentListInt = new ArrayList<Integer>();
+//
+//        Assertions.assertFalse(desktopComments.isEmpty(), "Wrong locator for comments");
+//        for (int i = 0; i < UNIT_COUNT; i++) {
+//           String commentString = (desktopComments.get(i).getText());
+//            commentListInt.add(baseFunc.getCommentInt(commentString));
+//        }
+//
+//        return commentListInt;
+//    }
 
-        return commentListInt;
-    }
 
-
-
-    // Assertions.assertFalse (driver.findElements(locator).isEmpty);  --- Proverka na pustoj element !
 }

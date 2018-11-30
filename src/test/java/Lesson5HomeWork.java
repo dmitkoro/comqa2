@@ -5,13 +5,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 import java.util.List;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
 
 public class Lesson5HomeWork {
+
 
     private WebDriver driver;
     private final By ARTICLE = By.xpath(".//h3[@class = 'top2012-title']");
