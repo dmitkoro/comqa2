@@ -11,6 +11,10 @@ public class CategoryMobilePages {
 
     BaseFunc baseFunc;
 
+    private final By ARTICLES_FULL_MOBILE = By.xpath(".//div[@class='md-mosaic-title']");
+    private final By COMMENTS_MOBILE = By.xpath(".//a[@class='commentCount']");
+    private final By ARTICLES_MOBILE = By.xpath(".//a[@class='md-scrollpos']");
+
     public Integer UNIT_COUNT;
 
     public CategoryMobilePages(BaseFunc baseFunc) {
@@ -19,9 +23,9 @@ public class CategoryMobilePages {
     }
 
 
-    public List<String> mobileArticleNames(By locator) {
+    public List<String> mobileArticleNames() {
 
-        List<WebElement> mobileArticles = baseFunc.getElements(locator);
+        List<WebElement> mobileArticles = baseFunc.getElements(ARTICLES_MOBILE);
         List<String> articles = new ArrayList<String>();
 
         Assertions.assertFalse(mobileArticles.isEmpty(), "Wrong article title");
@@ -32,20 +36,9 @@ public class CategoryMobilePages {
         return articles;
     }
 
+    public List<Integer> mobileCommentsCount (){
+        List<Integer> mobileCommentsCount = baseFunc.articlesWithComments(ARTICLES_FULL_MOBILE, COMMENTS_MOBILE);
+        return mobileCommentsCount;
+    }
 
-    //REPLACED with common method "articlesWithComments" in BaseFunc!!!
-
-//    public List<Integer> mobileCommentsCount (By locator) {
-//
-//        List<WebElement> mobileComments = baseFunc.getElements(locator);
-//        List<Integer> commentListInt = new ArrayList<Integer>();
-//
-//        Assertions.assertFalse(mobileComments.isEmpty(), "Wrong locator for comments");
-//        for (int i = 0; i < UNIT_COUNT; i++) {
-//            String commentString = (mobileComments.get(i).getText());
-//            commentListInt.add(baseFunc.getCommentInt(commentString));
-//        }
-//
-//        return commentListInt;
-//    }
 }

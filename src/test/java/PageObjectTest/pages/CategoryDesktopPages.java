@@ -11,6 +11,9 @@ public class CategoryDesktopPages {
 
     BaseFunc baseFunc;
 
+    private final By ARTICLES_DESKTOP = By.xpath(".//a[@class='text-mine-shaft']");
+    private final By ARTICLES_FULL_DESKTOP = By.xpath(".//article[contains(@class,'col-')]");
+    private final By COMMENTS_DESKTOP = By.xpath(".//a[@class='comment-count text-red-ribbon']");
 
     public Integer UNIT_COUNT;
 
@@ -19,10 +22,9 @@ public class CategoryDesktopPages {
         UNIT_COUNT = 3;
     }
 
+    public List<String> desktopArticleNames() {
 
-    public List<String> desktopArticleNames(By locator) {
-
-        List<WebElement> desktopArticles = baseFunc.getElements(locator);
+        List<WebElement> desktopArticles = baseFunc.getElements(ARTICLES_DESKTOP);
         List<String> articles = new ArrayList<String>();
 
         Assertions.assertFalse(desktopArticles.isEmpty(), "Wrong article title");
@@ -33,22 +35,9 @@ public class CategoryDesktopPages {
         return articles;
     }
 
-
-    //REPLACED with common method "articlesWithComments" in BaseFunc!!!
-
-//    public List<Integer> desktopCommentsCount (By locator) {
-//
-//        List<WebElement> desktopComments = baseFunc.getElements(locator);
-//        List<Integer> commentListInt = new ArrayList<Integer>();
-//
-//        Assertions.assertFalse(desktopComments.isEmpty(), "Wrong locator for comments");
-//        for (int i = 0; i < UNIT_COUNT; i++) {
-//           String commentString = (desktopComments.get(i).getText());
-//            commentListInt.add(baseFunc.getCommentInt(commentString));
-//        }
-//
-//        return commentListInt;
-//    }
-
+    public List<Integer> desktopCommentsCount() {
+        List<Integer> desktopCommentsCount = baseFunc.articlesWithComments(ARTICLES_FULL_DESKTOP, COMMENTS_DESKTOP);
+        return desktopCommentsCount;
+    }
 
 }
