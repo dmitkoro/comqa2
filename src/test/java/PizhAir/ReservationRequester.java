@@ -10,15 +10,15 @@ import java.io.IOException;
 public class ReservationRequester {
 
     private final String url = "http://qaguru.lv:8090/tickets/getReservations.php";
+    private String responseToParse;
 
-    public Registration[] getRegistration () throws IOException {
+    public Registration[] getRegistration() throws IOException {
 
         RestTemplate restTemplate = new RestTemplate();
-        String responseToParse = restTemplate.getForEntity(url, String.class).getBody();
+        responseToParse = restTemplate.getForEntity(url, String.class).getBody();
 
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.readValue(responseToParse, Registration[].class);
-
     }
 
 }
