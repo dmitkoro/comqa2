@@ -9,9 +9,9 @@ import java.io.IOException;
 
 public class ReservationRequester {
 
+    private final String url = "http://qaguru.lv:8090/tickets/getReservations.php";
 
     public Registration[] getRegistration () throws IOException {
-        String url = "http://qaguru.lv:8090/tickets/getReservations.php";
 
         RestTemplate restTemplate = new RestTemplate();
         String responseToParse = restTemplate.getForEntity(url, String.class).getBody();
